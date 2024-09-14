@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Capture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Webcam Capture</h1>
+    
+    <div id="container">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas id="canvas" style="display: none;"></canvas>
+        <img id="capturedImage" alt="Captured Image" />
+    </div>
+
+    <button id="useCamera">Use Camera</button>
+    <button id="upload">Upload Image</button>
+    <input type="file" id="fileInput" accept="image/*" />
+
+    <button id="capture">Take Picture</button>
+
+    <div id="image-container">
+        <img id="originalImage" alt="Original Image" />
+        <img id="edgeDetectedImage" alt="Edge Detected Image" />
+    </div>
+
+    <button id="sobel">Sobel Edge Detection</button>
+    <button id="bw">Black and White</button>
+    <button id="brightness">Brightness</button>
+    <button id="glpf">Gaussian LPF</button>
+    <button id="sharpen">Sharpen</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
