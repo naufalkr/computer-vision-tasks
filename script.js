@@ -3,7 +3,7 @@ const canvas = document.getElementById('canvas');
 const capturedImage = document.getElementById('capturedImage');
 const captureButton = document.getElementById('capture');
 const originalImage = document.getElementById('originalImage');
-const edgeDetectedImage = document.getElementById('edgeDetectedImage');
+const filteredImage = document.getElementById('filteredImage');
 const sobelButton = document.getElementById('sobel');
 const bwButton = document.getElementById('bw');
 const brightnessButton = document.getElementById('brightness');
@@ -40,13 +40,11 @@ function handleImage(imageSrc) {
 //         console.error("Error accessing webcam: ", err);
 //     });
 
-// Event listener for using the camera
 useCameraButton.addEventListener('click', () => {
     video.style.display = 'block';
     fileInput.style.display = 'none';
     canvas.style.display = 'none';
 
-    // Start the camera when 'Use Camera' button is clicked
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(stream => {
             video.srcObject = stream;
@@ -56,14 +54,12 @@ useCameraButton.addEventListener('click', () => {
         });
 });
 
-// Event listener for uploading an image
 uploadButton.addEventListener('click', () => {
     video.style.display = 'none';
     fileInput.style.display = 'block';
     canvas.style.display = 'none';
 });
 
-// Event listener for file input change
 fileInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -75,7 +71,6 @@ fileInput.addEventListener('change', (event) => {
     }
 });
 
-// Event listener for capturing an image
 captureButton.addEventListener('click', () => {
     if (video.style.display === 'block') {
         const context = canvas.getContext('2d');
@@ -92,7 +87,7 @@ captureButton.addEventListener('click', () => {
     }
 });
 
-// Event listener for Sobel filter
+// Sobel edge detection
 sobelButton.addEventListener('click', () => {
     const context = canvas.getContext('2d');
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -140,11 +135,11 @@ sobelButton.addEventListener('click', () => {
     }
 
     context.putImageData(outputData, 0, 0);
-    edgeDetectedImage.src = canvas.toDataURL('image/png');
-    edgeDetectedImage.style.display = 'block';
+    filteredImage.src = canvas.toDataURL('image/png');
+    filteredImage.style.display = 'block';
 });
 
-// Event listener for black and white filter
+// black and white filter
 bwButton.addEventListener('click', () => {
     const context = canvas.getContext('2d');
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -158,11 +153,11 @@ bwButton.addEventListener('click', () => {
     }
 
     context.putImageData(imageData, 0, 0);
-    edgeDetectedImage.src = canvas.toDataURL('image/png');
-    edgeDetectedImage.style.display = 'block';
+    filteredImage.src = canvas.toDataURL('image/png');
+    filteredImage.style.display = 'block';
 });
 
-// Event listener for brightness adjustment
+// brightness
 brightnessButton.addEventListener('click', () => {
     const context = canvas.getContext('2d');
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -175,11 +170,11 @@ brightnessButton.addEventListener('click', () => {
     }
 
     context.putImageData(imageData, 0, 0);
-    edgeDetectedImage.src = canvas.toDataURL('image/png');
-    edgeDetectedImage.style.display = 'block';
+    filteredImage.src = canvas.toDataURL('image/png');
+    filteredImage.style.display = 'block';
 });
 
-// Event listener for Gaussian low-pass filter
+// Gaussian low-pass filter
 glpfButton.addEventListener('click', () => {
     const context = canvas.getContext('2d');
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -220,11 +215,11 @@ glpfButton.addEventListener('click', () => {
     }
 
     context.putImageData(outputData, 0, 0);
-    edgeDetectedImage.src = canvas.toDataURL('image/png');
-    edgeDetectedImage.style.display = 'block';
+    filteredImage.src = canvas.toDataURL('image/png');
+    filteredImage.style.display = 'block';
 });
 
-// Event listener for sharpening filter
+// sharpening filter
 sharpenButton.addEventListener('click', () => {
     const context = canvas.getContext('2d');
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -265,6 +260,6 @@ sharpenButton.addEventListener('click', () => {
     }
 
     context.putImageData(outputData, 0, 0);
-    edgeDetectedImage.src = canvas.toDataURL('image/png');
-    edgeDetectedImage.style.display = 'block';
+    filteredImage.src = canvas.toDataURL('image/png');
+    filteredImage.style.display = 'block';
 });

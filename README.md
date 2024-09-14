@@ -1,2 +1,2 @@
-# image-processing
-Tugas 1 Pengolahan Citra dan Visi
+# image-filtering
+Image filtering in spatial and frequency domains
