@@ -233,7 +233,7 @@ function applyCLAHE() {
 }
 
 
-// CLAHE
+// Bilateral
 function applyBilateral() {
     if (typeof cv === 'undefined') {
         alert("OpenCV.js not loaded!");
